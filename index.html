@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <style>
+            .parts {
+                height: 500px;
+                width: 500px;
+                position: relative;
+            }
+
+            .part {
+                width: 500px;
+                height: 500px;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .part.brush {
+                background-image: url("images/bürste.png");
+            }
+
+            .part.container[color="blue"] {
+                background-image: url("images/behälter_blau.png");
+            }
+
+            .part.container[color="green"] {
+                background-image: url("images/behälter_grün.png");
+            }
+
+            .part.container[color="orange"] {
+                background-image: url("images/behälter_orange.png");
+            }
+
+            .part.container[color="red"] {
+                background-image: url("images/behälter_rot.png");
+            }
+
+            .part.container[color="darkblue"] {
+                background-image: url("images/behälter_dunkelblau.png");
+            }
+
+            .part.lid[color="blue"] {
+                background-image: url("images/deckel_blau.png");
+            }
+
+            .part.lid[color="green"] {
+                background-image: url("images/deckel_grün.png");
+            }
+
+            .part.lid[color="orange"] {
+                background-image: url("images/deckel_orange.png");
+            }
+
+            .part.lid[color="red"] {
+                background-image: url("images/deckel_rot.png");
+            }
+
+            .part.lid[color="darkblue"] {
+                background-image: url("images/deckel_dunkelblau.png");
+            }
+
+            .part.inlay[color="blue"] {
+                background-image: url("images/Einsatz_blau.png");
+            }
+
+            .part.inlay[color="green"] {
+                background-image: url("images/Einsatz_grün.png");
+            }
+
+            .part.inlay[color="orange"] {
+                background-image: url("images/Einsatz_orange.png");
+            }
+
+            .part.inlay[color="red"] {
+                background-image: url("images/Einsatz_rot.png");
+            }
+
+            .part.inlay[color="darkblue"] {
+                background-image: url("images/Einsatz_dunkelblau.png");
+            }
+
+            .part.midsection[color="blue"] {
+                background-image: url("images/Zwischenstück_blau.png");
+            }
+
+            .part.midsection[color="green"] {
+                background-image: url("images/Zwischenstück_grün.png");
+            }
+
+            .part.midsection[color="orange"] {
+                background-image: url("images/Zwischenstück_orange.png");
+            }
+
+            .part.midsection[color="red"] {
+                background-image: url("images/Zwischenstück_rot.png");
+            }
+
+            .part.midsection[color="darkblue"] {
+                background-image: url("images/Zwischenstück_dunkelblau.png");
+            }
+
+            .part.handle[color="blue"] {
+                background-image: url("images/stiel_blau.png");
+            }
+
+            .part.handle[color="green"] {
+                background-image: url("images/stiel_grün.png");
+            }
+
+            .part.handle[color="orange"] {
+                background-image: url("images/stiel_orange.png");
+            }
+
+            .part.handle[color="red"] {
+                background-image: url("images/stiel_rot.png");
+            }
+
+            .part.handle[color="darkblue"] {
+                background-image: url("images/stiel_dunkelblau.png");
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parts">
+            <div class="part brush"></div>
+            <div class="part container" color="blue"></div>
+            <div class="part lid" color="green"></div>
+            <div class="part inlay" color="orange"></div>
+            <div class="part midsection" color="darkblue"></div>
+            <div class="part handle" color="red"></div>
+        </div>
+
+        <label for="containerColor">Behaelter</label>
+        <select id="containerColor" part="container">
+            <option value="blue">Blau</option>
+            <option value="green">Gruen</option>
+            <option value="orange">Orange</option>
+            <option value="red">Rot</option>
+            <option value="darkblue">Dunkelblau</option>
+        </select>
+
+        <label for="lidColor">Deckel</label>
+        <select id="lidColor" part="lid">
+            <option value="blue">Blau</option>
+            <option value="green">Gruen</option>
+            <option value="orange">Orange</option>
+            <option value="red">Rot</option>
+            <option value="darkblue">Dunkelblau</option>
+        </select>
+
+        <label for="inlayColor">Einlage</label>
+        <select id="inlayColor" part="inlay">
+            <option value="blue">Blau</option>
+            <option value="green">Gruen</option>
+            <option value="orange">Orange</option>
+            <option value="red">Rot</option>
+            <option value="darkblue">Dunkelblau</option>
+        </select>
+
+        <label for="midsectionColor">Zwischenstueck</label>
+        <select id="midsectionColor" part="midsection">
+            <option value="blue">Blau</option>
+            <option value="green">Gruen</option>
+            <option value="orange">Orange</option>
+            <option value="red">Rot</option>
+            <option value="darkblue">Dunkelblau</option>
+        </select>
+
+        <label for="handleColor">Stiel</label>
+        <select id="handleColor" part="handle">
+            <option value="blue">Blau</option>
+            <option value="green">Gruen</option>
+            <option value="orange">Orange</option>
+            <option value="red">Rot</option>
+            <option value="darkblue">Dunkelblau</option>
+        </select>
+
+        <script>
+            function colorSelected(e) {
+                var part = e.target.getAttribute("part");
+                var partEl = document.querySelector(".part." + part);
+                partEl.setAttribute("color", e.target.value);
+            }
+            var selectors = document.querySelectorAll("select");
+            for (var i=0; i<selectors.length; i++) {
+                selectors[i].addEventListener("change", colorSelected);
+            }
+        </script>
+    </body>
+</html>
