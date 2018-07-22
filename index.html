@@ -2,17 +2,68 @@
     <head>
         <style>
             body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
                 display: flex;
-                flex-direction: column;
+            }
+
+            .controls {
+                font-family: sans-serif;
+                width: 200px;
+                align-self: center;
+                padding: 10px;
+            }
+
+            .controls > label {
+                display: flex;
+                padding: 5px 10px;
+                align-items: center;
+            }
+
+            .controls > label > select {
+                -webkit-appearance: none;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                color: transparent;
+                cursor: pointer;
+            }
+
+            .controls > label > select[color="red"] {
+                background: #f75848;
+            }
+
+            .controls > label > select[color="blue"] {
+                background: #4fb0e4;
+            }
+
+            .controls > label > select[color="orange"] {
+                background: #ff9a4d;
+            }
+
+            .controls > label > select[color="green"] {
+                background: #a4c75f;
+            }
+
+            .controls > label > select[color="darkblue"] {
+                background: #3f5fd9;
+            }
+
+
+            .controls > label > div {
+                flex: 1;
             }
 
             .parts {
-                display: flex;
-                position: absolute;
-                top: 0;
-                right: 0
-                left: 0;
-                bottom: 0;
                 position: relative;
                 flex: 1;
             }
@@ -25,7 +76,7 @@
                 bottom: 0;
                 background-position: center center;
                 background-repeat: no-repeat;
-                background-size: contain;
+                background-size: cover;
             }
 
             .part.brush {
@@ -134,69 +185,91 @@
         </style>
     </head>
     <body>
-        <div class="parts">
-            <div class="part brush"></div>
-            <div class="part container" color="blue"></div>
-            <div class="part lid" color="green"></div>
-            <div class="part inlay" color="orange"></div>
-            <div class="part midsection" color="darkblue"></div>
-            <div class="part handle" color="red"></div>
+
+        <div class="container">
+
+            <div class="parts">
+                <div class="part brush"></div>
+                <div class="part container"></div>
+                <div class="part lid"></div>
+                <div class="part inlay"></div>
+                <div class="part midsection"></div>
+                <div class="part handle"></div>
+            </div>
+
+            <div class="controls">
+
+                <label>
+                    <div>Behälter</div>
+                    <select id="containerColor" part="container">
+                        <option value="blue" selected>Blau</option>
+                        <option value="green">Grün</option>
+                        <option value="orange">Orange</option>
+                        <option value="red">Rot</option>
+                        <option value="darkblue">Dunkelblau</option>
+                    </select>
+                </label>
+
+                <label>
+                    <div>Deckel</div>
+                    <select id="lidColor" part="lid">
+                        <option value="blue">Blau</option>
+                        <option value="green" selected>Grün</option>
+                        <option value="orange">Orange</option>
+                        <option value="red">Rot</option>
+                        <option value="darkblue">Dunkelblau</option>
+                    </select>
+                </label>
+
+                <label>
+                    <div>Einlage</div>
+                    <select id="inlayColor" part="inlay">
+                        <option value="blue">Blau</option>
+                        <option value="green">Grün</option>
+                        <option value="orange" selected>Orange</option>
+                        <option value="red">Rot</option>
+                        <option value="darkblue">Dunkelblau</option>
+                    </select>
+                </label>
+
+                <label>
+                    <div>Zwischenstück</div>
+                    <select id="midsectionColor" part="midsection">
+                        <option value="blue">Blau</option>
+                        <option value="green">Grün</option>
+                        <option value="orange">Orange</option>
+                        <option value="red" selected>Rot</option>
+                        <option value="darkblue">Dunkelblau</option>
+                    </select>
+                </label>
+
+                <label>
+                    <div>Stiel</div>
+                    <select id="handleColor" part="handle">
+                        <option value="blue">Blau</option>
+                        <option value="green">Grün</option>
+                        <option value="orange">Orange</option>
+                        <option value="red">Rot</option>
+                        <option value="darkblue" selected>Dunkelblau</option>
+                    </select>
+                </label>
+
+            </div>
+
         </div>
-
-        <label for="containerColor">Behaelter</label>
-        <select id="containerColor" part="container">
-            <option value="blue">Blau</option>
-            <option value="green">Gruen</option>
-            <option value="orange">Orange</option>
-            <option value="red">Rot</option>
-            <option value="darkblue">Dunkelblau</option>
-        </select>
-
-        <label for="lidColor">Deckel</label>
-        <select id="lidColor" part="lid">
-            <option value="blue">Blau</option>
-            <option value="green">Gruen</option>
-            <option value="orange">Orange</option>
-            <option value="red">Rot</option>
-            <option value="darkblue">Dunkelblau</option>
-        </select>
-
-        <label for="inlayColor">Einlage</label>
-        <select id="inlayColor" part="inlay">
-            <option value="blue">Blau</option>
-            <option value="green">Gruen</option>
-            <option value="orange">Orange</option>
-            <option value="red">Rot</option>
-            <option value="darkblue">Dunkelblau</option>
-        </select>
-
-        <label for="midsectionColor">Zwischenstueck</label>
-        <select id="midsectionColor" part="midsection">
-            <option value="blue">Blau</option>
-            <option value="green">Gruen</option>
-            <option value="orange">Orange</option>
-            <option value="red">Rot</option>
-            <option value="darkblue">Dunkelblau</option>
-        </select>
-
-        <label for="handleColor">Stiel</label>
-        <select id="handleColor" part="handle">
-            <option value="blue">Blau</option>
-            <option value="green">Gruen</option>
-            <option value="orange">Orange</option>
-            <option value="red">Rot</option>
-            <option value="darkblue">Dunkelblau</option>
-        </select>
 
         <script>
             function colorSelected(e) {
-                var part = e.target.getAttribute("part");
+                var selector = e.target;
+                var part = selector.getAttribute("part");
                 var partEl = document.querySelector(".part." + part);
-                partEl.setAttribute("color", e.target.value);
+                partEl.setAttribute("color", selector.value);
+                selector.setAttribute("color", selector.value);
             }
             var selectors = document.querySelectorAll("select");
             for (var i=0; i<selectors.length; i++) {
                 selectors[i].addEventListener("change", colorSelected);
+                colorSelected({target: selectors[i]});
             }
         </script>
     </body>
