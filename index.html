@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
         <style>
             body {
                 margin: 0;
@@ -13,13 +14,18 @@
                 left: 0;
                 bottom: 0;
                 display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .controls {
                 font-family: sans-serif;
                 width: 200px;
-                align-self: center;
                 padding: 10px;
+            }
+
+            .controls > h3 {
+                text-align: center;
             }
 
             .controls > label {
@@ -27,6 +33,11 @@
                 padding: 5px 10px;
                 align-items: center;
                 position: relative;
+                border-radius: 5px;
+            }
+
+            .controls > label:hover {
+                background: #f1f1f1;
             }
 
             .controls > label > select {
@@ -34,6 +45,7 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0;
+                cursor: pointer;
             }
 
             .controls > label::after {
@@ -43,7 +55,6 @@
                 width: 50px;
                 height: 50px;
                 border-radius: 100%;
-                cursor: pointer;
             }
 
             .controls > label[color="red"]::after {
@@ -73,7 +84,8 @@
 
             .parts {
                 position: relative;
-                flex: 1;
+                width: 400px;
+                height: 500px;
             }
 
             .part {
@@ -82,9 +94,9 @@
                 right: 0;
                 top: 0;
                 bottom: 0;
-                background-position: center center;
+                 background-position: center -50px;
                 background-repeat: no-repeat;
-                background-size: cover;
+                background-size: 1000px;
             }
 
             .part.brush {
@@ -190,6 +202,17 @@
             .part.handle[color="darkblue"] {
                 background-image: url("images/stiel_dunkelblau.png");
             }
+
+            @media (max-width: 600px) {
+                .container {
+                    display: block;
+                }
+
+                .parts, .controls {
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+            }
         </style>
     </head>
     <body>
@@ -207,11 +230,13 @@
 
             <div class="controls">
 
+                <h3>W&aumlhle deine Farben:</h3>
+
                 <label for="containerColor">
-                    <div>Behälter</div>
+                    <div>Beh&aumllter</div>
                     <select id="containerColor" part="container">
                         <option value="blue" selected>Blau</option>
-                        <option value="green">Grün</option>
+                        <option value="green">Gr&uumln</option>
                         <option value="orange">Orange</option>
                         <option value="red">Rot</option>
                         <option value="darkblue">Dunkelblau</option>
@@ -222,7 +247,7 @@
                     <div>Deckel</div>
                     <select id="lidColor" part="lid">
                         <option value="blue">Blau</option>
-                        <option value="green" selected>Grün</option>
+                        <option value="green" selected>Gr&uumln</option>
                         <option value="orange">Orange</option>
                         <option value="red">Rot</option>
                         <option value="darkblue">Dunkelblau</option>
@@ -233,7 +258,7 @@
                     <div>Einlage</div>
                     <select id="inlayColor" part="inlay">
                         <option value="blue">Blau</option>
-                        <option value="green">Grün</option>
+                        <option value="green">Gr&uumln</option>
                         <option value="orange" selected>Orange</option>
                         <option value="red">Rot</option>
                         <option value="darkblue">Dunkelblau</option>
@@ -241,10 +266,10 @@
                 </label>
 
                 <label>
-                    <div>Zwischenstück</div>
+                    <div>Zwischenst&uumlck</div>
                     <select id="midsectionColor" part="midsection">
                         <option value="blue">Blau</option>
-                        <option value="green">Grün</option>
+                        <option value="green">Gr&uumln</option>
                         <option value="orange">Orange</option>
                         <option value="red" selected>Rot</option>
                         <option value="darkblue">Dunkelblau</option>
@@ -255,7 +280,7 @@
                     <div>Stiel</div>
                     <select id="handleColor" part="handle">
                         <option value="blue">Blau</option>
-                        <option value="green">Grün</option>
+                        <option value="green">Gr&uumln</option>
                         <option value="orange">Orange</option>
                         <option value="red">Rot</option>
                         <option value="darkblue" selected>Dunkelblau</option>
