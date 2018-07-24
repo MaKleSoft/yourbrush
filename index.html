@@ -26,35 +26,43 @@
                 display: flex;
                 padding: 5px 10px;
                 align-items: center;
+                position: relative;
             }
 
             .controls > label > select {
-                -webkit-appearance: none;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+            }
+
+            .controls > label::after {
+                content: "";
+                display: block;
                 border: none;
                 width: 50px;
                 height: 50px;
                 border-radius: 100%;
-                color: transparent;
                 cursor: pointer;
             }
 
-            .controls > label > select[color="red"] {
+            .controls > label[color="red"]::after {
                 background: #f75848;
             }
 
-            .controls > label > select[color="blue"] {
+            .controls > label[color="blue"]::after {
                 background: #4fb0e4;
             }
 
-            .controls > label > select[color="orange"] {
+            .controls > label[color="orange"]::after {
                 background: #ff9a4d;
             }
 
-            .controls > label > select[color="green"] {
+            .controls > label[color="green"]::after {
                 background: #a4c75f;
             }
 
-            .controls > label > select[color="darkblue"] {
+            .controls > label[color="darkblue"]::after {
                 background: #3f5fd9;
             }
 
@@ -199,7 +207,7 @@
 
             <div class="controls">
 
-                <label>
+                <label for="containerColor">
                     <div>Behälter</div>
                     <select id="containerColor" part="container">
                         <option value="blue" selected>Blau</option>
@@ -264,7 +272,7 @@
                 var part = selector.getAttribute("part");
                 var partEl = document.querySelector(".part." + part);
                 partEl.setAttribute("color", selector.value);
-                selector.setAttribute("color", selector.value);
+                selector.parentElement.setAttribute("color", selector.value);
             }
             var selectors = document.querySelectorAll("select");
             for (var i=0; i<selectors.length; i++) {
